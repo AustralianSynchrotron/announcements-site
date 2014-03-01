@@ -3,14 +3,23 @@
   <head>
     <title>Announcements</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
-    <script src="js/bootstrap.js"></script>
+    <link href="css/style.css" rel="stylesheet" media="screen">
+    <script src="js/jquery.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('.announcement').click(function() {
+          var announcementPath = $(this).attr('href');
+          $.get(announcementPath);
+          return false;
+        });
+      });
+    </script>
   </head>
   <body>
-    <h1>Announcements</h1>
+    <h1>Announcements!</h1>
     <ul>
     {% for announcement in announcements %}
-    <li><a class="btn btn-primary btn-large" href='announce?code={{announcement.code}}'>{{ announcement.name 
+    <li><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
 }}</a></li>
     {% endfor %}
   </body>

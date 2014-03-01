@@ -21,6 +21,7 @@ for code, (pv, value)  in codes.items():
 class Root:
     @cherrypy.expose
     def index(self):
+        print 'Rendering...'
         return index.render(announcements=announcements)
 
     @cherrypy.expose
@@ -29,8 +30,8 @@ class Root:
         print 'Announce request:', code
         try:
             pv, value = codes[code] 
-            print 'caput({0}, {1})'.format(pv, value)
-            caput(pv, value)
+            print 'caput("{0}", {1})'.format(pv, value)
+            #caput(pv, value)
             success = True
         except KeyError:
             success = False
@@ -43,8 +44,8 @@ cherrypy.config.update({'server.socket_port': 5560})
 conf = {
        '/': {
            'tools.staticdir.on': True,
-           'tools.staticdir.dir': os.path.join(current_dir, 'bootstrap')
+           'tools.staticdir.dir': os.path.join(current_dir, 'public')
        }
 }
 
-cherrypy.quickstart(Root(), script_name='/announcer', config=conf)
+cherrypy.quickstart(Root(), script_name='/', config=conf)
