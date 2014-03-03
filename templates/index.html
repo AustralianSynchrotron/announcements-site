@@ -16,10 +16,10 @@
     </script>
   </head>
   <body>
-    <h1>Announcements!</h1>
+    <h1>Announcements</h1>
     <ul>
     {% for announcement in announcements %}
-    <li><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
+    <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
 }}</a></li>
     {% endfor %}
   </body>

@@ -12,16 +12,16 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 loader = FileSystemLoader(os.path.join(current_dir, 'templates'))
 env = Environment(loader=loader)
 index = env.get_template('index.html')
-Announcement = namedtuple('Announcement', 'name code')
+Announcement = namedtuple('Announcement', 'name code group title')
 announcements = []
-for code, (pv, value)  in codes.items():
-    name = '{0} = {1}'.format(pv, value)
-    announcements.append(Announcement(name, code))
+for code, (pv, value, group, title)  in codes.items():
+    #name = '{0} = {1}'.format(pv, value)
+    name = '{0}'.format(title)
+    announcements.append(Announcement(name, code, group, title))
 
 class Root:
     @cherrypy.expose
     def index(self):
-        print 'Rendering...'
         return index.render(announcements=announcements)
 
     @cherrypy.expose
@@ -29,7 +29,8 @@ class Root:
         code = int(code)
         print 'Announce request:', code
         try:
-            pv, value = codes[code] 
+            pv = codes[code][0]
+            value = codes[code][1]
             print 'caput("{0}", {1})'.format(pv, value)
             #caput(pv, value)
             success = True
