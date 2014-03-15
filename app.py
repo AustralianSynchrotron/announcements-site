@@ -15,7 +15,6 @@ index = env.get_template('index.html')
 Announcement = namedtuple('Announcement', 'name code group title')
 announcements = []
 for code, (pv, value, group, title)  in codes.items():
-    #name = '{0} = {1}'.format(pv, value)
     name = '{0}'.format(title)
     announcements.append(Announcement(name, code, group, title))
 
@@ -38,8 +37,8 @@ class Root:
         try:
             pv = codes[code][0]
             value = codes[code][1]
-            print 'caput("{0}", {1})'.format(pv, value)
-            #caput(pv, value)
+            print 'caput("{0}", "{1}")'.format(pv, value)
+            caput(pv, value)
             success = True
         except KeyError:
             success = False
