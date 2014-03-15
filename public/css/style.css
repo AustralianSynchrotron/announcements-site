@@ -1,11 +1,45 @@
+* {
+  margin:0;
+  padding:0;
+}
+
+/*div {
+  outline: 1px dotted black;
+}*/
+
 body {
+  /*width: 960px;
+  outline: 1px dotted black;*/
   font-family: sans-serif;
   background-color: beige;
 }
 
 h1 {
-  font-size: 2.5em;
+  margin-bottom:10px;
+  outline: 2px solid black;
+  font-size: 3.5em;
   text-align: center;
+  background-color:#e6e2a0;
+  border-bottom:3px black;/*not working*/
+}
+
+h2 {
+  margin:10px auto;
+  font-size: 1.0em;
+  text-align: center;
+  width:235px;
+}
+
+h2.coltitle {
+  border-bottom:1px solid black;
+  width:200px;
+}
+
+h3 {
+  margin-bottom:10px;
+  font-size:0.8em;
+  width:231px;
+  text-align:center;
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -13,33 +47,49 @@ a:link, a:visited, a:hover, a:active {
   text-decoration:none;
 }
 
+ul.master {
+  width:1020px;
+  margin:0px auto;
+  outline: 2px solid black;
+}
+
 ul {
+  margin: 0;
+  padding: 0;
   text-align: center;
+  /*outline: 1px dotted green;*/
   font-size: 1.5em;
+  vertical-align: top;
+  border-left:2px solid black;
+  border-right:2px solid black;
 }
 
 li {
   text-align: center;
+  width:235px;
   list-style-type: none;
 }
 
-/*li.tabs:nth-child(1), li.tabs:nth-child(2), li.tabs:nth-child(5), li.tabs:nth-child(6), li.tabs:nth-child(7) {
-  clear:both;
+li.col {
+  margin:0px 10px;
+  display:inline-block;
+  list-style-type:none;
   float:left;
-  font-size:0.5em;
-  color:blue;
-  display:block;
 }
 
-li.tabs:nth-child(3), li.tabs:nth-child(4), li.tabs:nth-last-child(1), li.tabs:nth-last-child(2), li.tabs:nth-last-child(3) {
-  clear:both;
-  float:right;
-  font-size:0.7em;
-  color:blue;
-  display:block;
-}*/
-li.tabs:nth-child(4n) {
+li.injection, li.searchi, li.searchsr, li.searchb, li.scraping, li.dump, li.pa, li.machine, li.testing, li.topup {
+  width:200px;
+  margin:15px auto;
+  text-align:center;
+  font-size: 0.7em;
+  outline: 3px solid black;
+  background-color:#d6d3a9;
+  border-radius:4px;
+}
+
+/*li.search {
   clear:both;
   float:left;
   font-size:0.5em;
-}
+  position:top;
+}*/

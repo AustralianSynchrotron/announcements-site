@@ -22,7 +22,14 @@ for code, (pv, value, group, title)  in codes.items():
 class Root:
     @cherrypy.expose
     def index(self):
-        return index.render(announcements=announcements)
+        data = {}
+        for announcement in announcements:
+            group = announcement.group
+            if group in data:
+                data[group].append(announcement)
+            else:
+                data[group] = [ announcement ]
+        return index.render(announcements=data)
 
     @cherrypy.expose
     def announce(self, code):
