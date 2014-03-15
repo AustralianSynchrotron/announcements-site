@@ -1,3 +1,6 @@
+/*-----------------------*/
+/*general*/
+/*-----------------------*/
 * {
   margin:0;
   padding:0;
@@ -8,6 +11,10 @@ body {
   background-color: beige;
 }
 
+/*-----------------------*/
+/*heading*/
+/*-----------------------*/
+
 h1 {
   margin-bottom:10px;
   outline: 2px solid black;
@@ -16,6 +23,9 @@ h1 {
   background-color:#e6e2a0;
 }
 
+/*-----------------------*/
+/*main content*/
+/*-----------------------*/
 h2 {
   margin:10px auto;
   font-size: 1.0em;
