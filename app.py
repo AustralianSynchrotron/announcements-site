@@ -55,4 +55,4 @@ conf = {
        }
 }
 
-cherrypy.quickstart(Root(), script_name='/', config=conf)
+cherrypy.quickstart(Root(), script_name='/announcer', config=conf)
