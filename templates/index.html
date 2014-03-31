@@ -9,7 +9,11 @@
       $(document).ready(function() {
         $('.announcement').click(function() {
           var announcementPath = $(this).attr('href');
-          $.get(announcementPath);
+          $.ajax({
+            url: announcementPath,
+            success: function(data){ $("#last_button").html(data.last_announcement)},
+            dataType: "json"
+          });
           return false;
         });
       });
@@ -18,75 +22,83 @@
   <body>
     <div id="banner"><h1>Announcements</h1></div>
     <div id="content">
-    <ul class="master">
-      <li class= "col">
-        <ul>
-          <li><h2>Injection</h2></li>
-          {% for announcement in announcements['injection'] %}
-          <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
-}}</a></li>
-          {% endfor %}
-          <li><h2>Beam Dump</h2></li>
-          {% for announcement in announcements['dump'] %}
-          <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
-}}</a></li>
-          {% endfor %}
-       </ul>
-      </li>
-      <li class="col">
-        <ul>
-          <li><h2>Scraping</h2></li>
-          {% for announcement in announcements['scraping'] %}
-          <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
-}}</a></li>
-          {% endfor %}
-          <li><h2>PA Test</h2></li>
-          {% for announcement in announcements['pa'] %}
-          <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
-}}</a></li>
-          {% endfor %}
-        </ul>
-      </li>
-      <li class="col">
-        <ul>
-          <li><h2 class="coltitle">Search and Secure</h2></li>
-          <li><h3>Injection System</h3></li>
-          {% for announcement in announcements['searchi'] %}
-          <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
-}}</a></li>
-          {% endfor %}
-          <li><h3>Storage Ring</h3></li>
-          {% for announcement in announcements['searchsr'] %}
-          <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
-}}</a></li>
-          {% endfor %}
-          <li><h3>Injection System & Storage Ring</h3></li>
-          {% for announcement in announcements['searchb'] %}
-          <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
-}}</a></li>
-          {% endfor %}
-        </ul>
-      </li>
-      <li class="col">
-        <ul>
-          <li><h2>Injection Testing</h2></li>
-          {% for announcement in announcements['testing'] %}
-          <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
-}}</a></li>
-          {% endfor %}
-          <li><h2>Machine Studies</h2></li>
-          {% for announcement in announcements['machine'] %}
-          <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
-}}</a></li>
-          {% endfor %}
-          <li><h2>Top Up</h2></li>
-          {% for announcement in announcements['topup'] %}
-          <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
-}}</a></li>
-          {% endfor %}
-        </ul>
-      </li>
-    </ul>
+      <ul class="master">
+        <li class= "col">
+          <ul>
+            <li><h2>Injection</h2></li>
+            {% for announcement in announcements['injection'] %}
+            <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
+              }}</a></li>
+            {% endfor %}
+            <li><h2>Beam Dump</h2></li>
+            {% for announcement in announcements['dump'] %}
+            <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
+              }}</a></li>
+            {% endfor %}
+         </ul>
+        </li>
+        <li class="col">
+          <ul>
+            <li><h2>Scraping</h2></li>
+            {% for announcement in announcements['scraping'] %}
+            <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
+              }}</a></li>
+            {% endfor %}
+            <li><h2>PA Test</h2></li>
+            {% for announcement in announcements['pa'] %}
+            <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
+              }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li class="col">
+          <ul>
+            <li><h2 class="coltitle">Search and Secure</h2></li>
+            <li><h3>Injection System</h3></li>
+            {% for announcement in announcements['searchi'] %}
+            <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
+              }}</a></li>
+            {% endfor %}
+            <li><h3>Storage Ring</h3></li>
+            {% for announcement in announcements['searchsr'] %}
+            <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
+              }}</a></li>
+            {% endfor %}
+            <li><h3>Injection System & Storage Ring</h3></li>
+            {% for announcement in announcements['searchb'] %}
+            <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
+              }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li class="col">
+          <ul>
+            <li><h2>Injection Testing</h2></li>
+            {% for announcement in announcements['testing'] %}
+            <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
+              }}</a></li>
+            {% endfor %}
+            <li><h2>Machine Studies</h2></li>
+            {% for announcement in announcements['machine'] %}
+            <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
+              }}</a></li>
+            {% endfor %}
+            <li><h2>Top Up</h2></li>
+            {% for announcement in announcements['topup'] %}
+            <li class="tabs {{announcement.group}}"><a class="announcement" href='announce?code={{announcement.code}}'>{{ announcement.name 
+              }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div id="last_announced">
+      <h3 class="table_heading">Prior Announcements</h3>
+      <table>
+        <tr>
+          <td id="last_button">{{last_announcement}}</td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>
