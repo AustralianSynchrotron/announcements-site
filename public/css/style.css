@@ -50,6 +50,13 @@ a:link, a:visited, a:hover, a:active {
   text-decoration:none;
 }
 
+a:active {
+  display:block;
+  height:100%;
+  background-color: palegoldenrod;
+  text-decoration:none;
+}
+
 ul.master {
   width:1020px;
   margin:0px auto;
