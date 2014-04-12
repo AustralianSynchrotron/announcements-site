@@ -18,13 +18,11 @@ for code, (pv, value, group, title, recorded)  in codes.items():
     name = '{0}'.format(title)
     announcements.append(Announcement(name, code, group, title, recorded))
 
-announced = None
+recent_announcements = []
 
 class Root:
     @cherrypy.expose
     def index(self):
-        global announced
-
         data = {}
         for announcement in announcements:
             group = announcement.group
@@ -32,11 +30,11 @@ class Root:
                 data[group].append(announcement)
             else:
                 data[group] = [ announcement ]
-        return index.render(announcements=data,last_announcement=announced)
+        return index.render(announcements=data,recent_announcements=recent_announcements)
 
     @cherrypy.expose
     def announce(self, code):
-        global announced
+        global recent_announcements 
 
         code = int(code)
         print 'Announce request:', code
@@ -47,13 +45,11 @@ class Root:
             print 'caput("{0}", "{1}")'.format(pv, value)
             caput(pv, value)
             success = True
-            announced = recorded
+            recent_announcements.append(recorded)
+            recent_announcements = recent_announcements[-10:]
         except KeyError:
             success = False
-        return_data = {
-                'success': success,
-                'last_announcement': announced
-        }
+        return_data = {'success': success}
         return json.dumps(return_data)
 
 cherrypy.config.update({'server.socket_port': 5560})
