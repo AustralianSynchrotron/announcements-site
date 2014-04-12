@@ -103,7 +103,7 @@ li.injection, li.searchi, li.searchsr, li.searchb, li.scraping, li.dump, li.pa, 
   margin:0px;
   clear:both;
   overflow:auto;
-  height:80px;
+  /*height:80px;*/
   background-color:#d6d3a9;
 }
 
@@ -125,6 +125,18 @@ tr {
 
 td {
   text-align:center;
+}
+
+td.announced_list {
+  border-left: 1px solid goldenrod;
+}
+
+th {
+  border-bottom:1px solid goldenrod;
+}
+
+th.announced_title {
+  border-left: 1px solid goldenrod;
 }
 
 h3.table_heading {

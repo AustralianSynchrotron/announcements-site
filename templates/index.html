@@ -99,9 +99,12 @@
     <div id="last_announced">
       <h3 class="table_heading">Prior Announcements</h3>
       <table>
+        <th>Date - Time</th>
+        <th class="announced_title">Announcement</th>
         {% for recent_announcement in recent_announcements|reverse %}
           <tr>
-            <td>{{recent_announcement}}</td>
+            <td>{{recent_announcement["time"]}}</td>
+            <td class="announced_list">{{recent_announcement["announcement"]}}</td>
           </tr>
         {% endfor %}
       </table>

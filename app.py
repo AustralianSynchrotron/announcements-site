@@ -6,6 +6,7 @@ import os
 from collections import namedtuple
 from codes import codes
 from epics import caput
+from datetime import datetime
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -43,9 +44,10 @@ class Root:
             value = codes[code][1]
             recorded = codes[code][4]
             print 'caput("{0}", "{1}")'.format(pv, value)
-            caput(pv, value)
+            #caput(pv, value)
+            right_now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             success = True
-            recent_announcements.append(recorded)
+            recent_announcements.append({"announcement":recorded,"time":right_now})
             recent_announcements = recent_announcements[-10:]
         except KeyError:
             success = False
