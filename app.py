@@ -44,7 +44,7 @@ class Root:
             value = codes[code][1]
             recorded = codes[code][4]
             print 'caput("{0}", "{1}")'.format(pv, value)
-            #caput(pv, value)
+            caput(pv, value)
             right_now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             success = True
             recent_announcements.append({"announcement":recorded,"time":right_now})
